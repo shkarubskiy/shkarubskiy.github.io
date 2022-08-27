@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shuffler</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <section class="ancient">
+        <h2 class="ancient__title title">Выбор древнего</h2>
+        <div class="ancient__card">
+          <img
+            class="ancient__image"
+            src="./assets/Ancients/Azathoth.png"
+            alt=""
+          />
+          <button class="ancient__controls-left"><</button>
+          <button class="ancient__controls-right">></button>
+        </div>
+      </section>
+      <section class="difficulty">
+        <h2 class="difficulty__title title">Выбор сложности</h2>
+        <button class="difficulty__button-veryeasy button">Очень легко</button>
+        <button class="difficulty__button-easy button">Легко</button>
+        <button class="difficulty__button-normal button marked">
+          Нормально
+        </button>
+        <button class="difficulty__button-hard button">Сложно</button>
+        <button class="difficulty__button-veryhard button">Очень сложно</button>
+      </section>
+      <section class="deck">
+        <div class="deck__overlay">
+          <button class="deck__button button">Начать партию</button>
+        </div>
+        <h2 class="deck__title title">Колода для игры</h2>
+        <div class="deck__tracker tracker">
+          <div class="tracker__first first">
+            <p class="tracker__text">1 этап</p>
+            <div class="first__green">0</div>
+            <div class="first__brown">0</div>
+            <div class="first__blue">0</div>
+          </div>
+          <div class="tracker__second second">
+            <p class="tracker__text">2 этап</p>
+            <div class="second__green">0</div>
+            <div class="second__brown">0</div>
+            <div class="second__blue">0</div>
+          </div>
+          <div class="tracker__third third">
+            <p class="tracker__text">3 этап</p>
+            <div class="third__green">0</div>
+            <div class="third__brown">0</div>
+            <div class="third__blue">0</div>
+          </div>
+        </div>
+        <div class="deck__container">
+          <div class="deck__hidden">
+            <img
+              class="hidden__image"
+              src="./assets/mythicCardBackground.png"
+              alt=""
+            />
+          </div>
+          <div class="deck__shown">
+            <img class="shown__image" src="" alt="" />
+          </div>
+        </div>
+      </section>
+    </div>
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
