@@ -9,17 +9,17 @@ const ancientRight = document.querySelector(".ancient__controls-right");
 
 let currentAncient = 0;
 
-ancientLeft.addEventListener("click", () => {
-  if (currentAncient > 0) currentAncient--;
-  else currentAncient = ancients.length - 1;
-  ancientImage.src = ancients[currentAncient].cardFace;
-});
-
-ancientRight.addEventListener("click", () => {
+ancientRight.onclick = () => {
   if (currentAncient < ancients.length - 1) currentAncient++;
   else currentAncient = 0;
   ancientImage.src = ancients[currentAncient].cardFace;
-});
+};
+
+ancientLeft.onclick = () => {
+  if (currentAncient > 0) currentAncient--;
+  else currentAncient = ancients.length - 1;
+  ancientImage.src = ancients[currentAncient].cardFace;
+};
 
 const buttons = document.querySelectorAll(".button");
 const veryEasy = document.querySelector(".difficulty__button-veryeasy");
@@ -30,50 +30,50 @@ const veryHard = document.querySelector(".difficulty__button-veryhard");
 
 let difficult = 2;
 
-veryEasy.addEventListener("click", () => {
+veryEasy.onclick = () => {
   buttons.forEach((button) => {
     button.classList.remove("marked");
   });
   veryEasy.classList.add("marked");
   difficult = 0;
-});
+};
 
-easy.addEventListener("click", () => {
+easy.onclick = () => {
   buttons.forEach((button) => {
     button.classList.remove("marked");
   });
   easy.classList.add("marked");
   difficult = 1;
-});
+};
 
-normal.addEventListener("click", () => {
+normal.onclick = () => {
   buttons.forEach((button) => {
     button.classList.remove("marked");
   });
   normal.classList.add("marked");
   difficult = 2;
-});
+};
 
-hard.addEventListener("click", () => {
+hard.onclick = () => {
   buttons.forEach((button) => {
     button.classList.remove("marked");
   });
   hard.classList.add("marked");
   difficult = 3;
-});
+};
 
-veryHard.addEventListener("click", () => {
+veryHard.onclick = () => {
   buttons.forEach((button) => {
     button.classList.remove("marked");
   });
   veryHard.classList.add("marked");
   difficult = 4;
-});
+};
 
 const deckButton = document.querySelector(".deck__button");
 const deckOverlay = document.querySelector(".deck__overlay");
 
-deckButton.addEventListener("click", startGame);
+deckButton.onclick = startGame;
 
 let firstStageCards = [];
 let secondStageCards = [];
@@ -92,10 +92,7 @@ const thirdGreen = document.querySelector(".third__green");
 const thirdBrown = document.querySelector(".third__brown");
 const thirdBlue = document.querySelector(".third__blue");
 
-const ancientOverlay = document.querySelector(".ancient__overlay");
-const difficultyOverlay = document.querySelector(".difficulty__overlay");
-
-deck.addEventListener("click", () => {
+deck.onclick = () => {
   if (currentStage == 1) {
     shown.src = firstStageCards[firstStageCards.length - 1].cardFace;
     firstStageCards.pop();
@@ -107,20 +104,24 @@ deck.addEventListener("click", () => {
   } else if (currentStage == 3) {
     shown.src = thirdStageCards[thirdStageCards.length - 1].cardFace;
     thirdStageCards.pop();
-    if (thirdStageCards.length == 0) currentStage = 4;
-  } else if (currentStage == 4) gameOver();
+    if (thirdStageCards.length == 0) deck.classList.add("hidden");
+  }
   updateCounter();
-});
-
-function gameOver() {
-  console.log("game over");
-}
+};
 
 function startGame() {
   let counts = getCardsCount(currentAncient);
   let blue = getCardPool(counts.blue, difficult, blueCards);
   let brown = getCardPool(counts.brown, difficult, brownCards);
   let green = getCardPool(counts.green, difficult, greenCards);
+
+  veryEasy.onclick = null;
+  easy.onclick = null;
+  normal.onclick = null;
+  hard.onclick = null;
+  veryHard.onclick = null;
+  ancientRight.onclick = null;
+  ancientLeft.onclick = null;
 
   firstStageCards = firstStageCards.concat(
     blue.splice(0, ancients[currentAncient].firstStage.blueCards),
