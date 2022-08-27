@@ -117,9 +117,6 @@ function gameOver() {
 }
 
 function startGame() {
-  ancientOverlay.classList.remove(".hidden");
-  difficultyOverlay.classList.remove(".hidden");
-
   let counts = getCardsCount(currentAncient);
   let blue = getCardPool(counts.blue, difficult, blueCards);
   let brown = getCardPool(counts.brown, difficult, brownCards);
